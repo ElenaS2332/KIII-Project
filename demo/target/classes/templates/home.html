@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <section class="jumbotron text-center" xmlns:th="http://www.thymeleaf.org">
+        <div class="container">
+        </div>
+    </section>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <style>
+        .hero {
+            position: relative;
+            background: url('https://cdn.discordapp.com/attachments/1179135427039461460/1199293903522779227/d4.png?ex=65c2047c&is=65af8f7c&hm=f0e201123961dd73c0902510115acdd01a16096b79f4bea4f49260358d979528&') center/cover no-repeat;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero img {
+            width: 767px;
+            height: 396px;
+            display: block;
+            margin: 0 auto;
+        }
+        .backgound_link{
+            font-size: 40px;
+            font-weight: bold;
+            text-decoration: none;
+             padding-right: 500px;
+            padding-bottom: 200px;
+        }
+        .linkdva{
+            font-size: 40px;
+            font-weight: bold;
+            text-decoration: none;
+            padding-left: 250px;
+            padding-bottom: 400px;
+        }
+        .linktri{
+                font-size: 40px;
+                font-weight: bold;
+                text-decoration: none;
+                padding-left: 5px;
+                padding-bottom: 100px;
+
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <div>
+        <img
+                src="https://i.pinimg.com/originals/40/78/98/4078985bc6a79bfd627c5973d49acf6b.png"
+                alt="Wine Logo"
+                class="logo"
+        />
+    </div>
+<!--    menu-->
+    <ul>
+        <li><a href="/home"><button class="kopce1" type="submit">HOME</button></a></li>
+        <li><a href="/wine"><button class="kopce2" type="submit">WINE</button></a></li>
+        <li><a href="/wineries"><button class="kopce3" type="submit">WINERIES</button></a></li>
+    </ul>
+<!--za Hello ime-->
+    <div class="user-wrapper">
+        <div th:if="${username}" class="username">
+            <p class="name" th:text="'Hello ' + ${username}"></p>
+        </div>
+        <div class="col-md-6">
+            <a href="/logout" class="btn btn-lg btn-block btn-dark">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<!-- middle part -->
+<section class="hero">
+<div class="backgound_link">
+    <a href="/home"><button class="kopce1" type="submit">HOME</button></a>
+</div>
+    <div class="linkdva">
+        <a href="/wine"><button class="kopce2" type="submit">WINE</button></a>
+    </div>
+<div class="linktri">
+    <a href="/wineries"><button class="kopce3" type="submit">WINERIES</button></a>
+</div>
+</section>
+<footer>
+    <p>&copy; 2024 Winery Page. All rights reserved.</p>
+    <span>Contact: +123 000212</span>
+    <span>Email: test@gmail.com</span>
+</footer>
+</body>
+<style>
+    html,
+    body,
+    :root {
+        width: 100%;
+        height: 100%;
+    }
+    body {
+        font-family: 'Arial', sans-serif;
+        overflow-x: hidden;
+    }
+
+    nav {
+        background-color: darkgrey;
+        padding: 1rem 5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 6rem;
+    }
+
+    .logo {
+        height: 65px;
+        width: 65px;
+    }
+    .user-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .username {
+        display: flex;
+    }
+    .name {
+        font-style: italic;
+        font-size: 18px;
+        margin-left: 5px;
+    }
+    ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .hero {
+        background-color: #f7f1eb;
+        padding: 3rem;
+        gap: 1rem;
+        text-align: center;
+        display: flex;
+    }
+    .winery-card p {
+        max-width: 300px;
+    }
+    ul, li, button
+    {
+        font-family: Cambria;
+    }
+    li, button
+    {
+        border-radius: 20px;
+        border: none;
+        width: 100px;
+        height: 30px;
+        background-color: transparent;
+    }
+    button:focus
+    {
+        font-weight: bold;
+    }
+</style>
+</html>
