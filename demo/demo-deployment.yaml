@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+        - name: demo
+          image: elenaprogramer/demo:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: APPLICATION_CONFIG
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: application.properties
+            - name: DATABASE_URL
+              value: "postgresql://postgres:password@postgres-service:5432/postgres"
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: demo-secret
+                  key: database-password

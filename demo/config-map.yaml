@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+data:
+  postgresql.conf: |
+    # Example PostgreSQL configuration
+    listen_addresses = '*'
+    max_connections = 100
+  pg_hba.conf: |
+    # Example pg_hba.conf for PostgreSQL authentication
+    host    all             all             0.0.0.0/0               md5
