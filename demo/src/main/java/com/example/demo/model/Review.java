@@ -21,6 +21,8 @@ public class Review {
 
     private float score;
 
+
+    @Column(length = 1000)
     private String comment;
 
     @ManyToOne

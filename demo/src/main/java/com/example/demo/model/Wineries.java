@@ -15,16 +15,23 @@ public class Wineries {
     public Double latitude;
     public Double longitude;
 
+    @Column(length = 1000)
+
     public String name;
 
+    @Column(length = 1000)
     public String location;
+    @Column(length = 1000)
     public String rating;
+
+    @Column(length = 5000)
     public String description;
     public String phone;
 
     @OneToMany(mappedBy = "winery")
     private List<Review> reviews;
     @JsonProperty("img")
+    @Column(length = 1000)
     public String image;
 
     public Wineries() {

@@ -1,0 +1,17 @@
+
+/demo/target
+demo/.idea/dataSources.xml
+demo/.idea/inspectionProfiles/Project_Default.xml
+/demo/target/classes
+/demo/target
+demo/target/classes/com/example/demo/bootstrap/DataHolder.class
+/demo/target/surefire-reports
+demo/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+demo/target/classes/com/example/demo/bootstrap/DataHolder.class
+demo/target/classes/com/example/demo/bootstrap/DataHolder.class
+demo/target/classes/com/example/demo/model/Home.class
+demo/target/classes/com/example/demo/model/InvalidArgumentsException.class
+demo/target/classes/com/example/demo/model/InvalidUserExcepion.class
+/demo/target/classes/com
+demo/target/classes/com/example/demo/logger/WineryLogger.class
+demo/target/classes/com/example/demo/model/Home.class
