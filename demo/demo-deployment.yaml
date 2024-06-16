@@ -18,13 +18,16 @@ spec:
           ports:
             - containerPort: 80
           env:
-            - name: APPLICATION_CONFIG
+            - name: DATABASE_URL
               valueFrom:
                 configMapKeyRef:
-                  name: demo-config
-                  key: application.properties
-            - name: DATABASE_URL
-              value: "postgresql://postgres:password@postgres-service:5432/postgres"
+                  name: demo-configmap
+                  key: DATABASE_URL
+            - name: DATABASE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name:  demo-configmap
+                  key: DATABASE_USERNAME
             - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:

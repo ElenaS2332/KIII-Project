@@ -4,8 +4,7 @@ metadata:
   name: demo-ingress
 spec:
   rules:
-    - host: your.domain.com  # Replace with your actual domain or IP address
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
