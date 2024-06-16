@@ -15,3 +15,6 @@ demo/target/classes/com/example/demo/model/InvalidUserExcepion.class
 /demo/target/classes/com
 demo/target/classes/com/example/demo/logger/WineryLogger.class
 demo/target/classes/com/example/demo/model/Home.class
+demo/target/classes/com/example/demo/bootstrap/DataHolder.class
+demo/target/classes/com/example/demo/DemoApplication.class
+demo/target/classes/com/example/demo/logger/WineryLogger.class

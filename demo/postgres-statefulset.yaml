@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: postgres-statefulset
+  name: postgres
+  namespace: demo-namespace
 spec:
   serviceName: postgres-service
   replicas: 1
@@ -15,33 +16,24 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: postgres:latest
+          image: postgres:13
+          env:
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: dians
+            - name: POSTGRES_DB
+              value: dians-users
           ports:
             - containerPort: 5432
-          env:
-            - name: POSTGRES_DB
-              valueFrom:
-                configMapKeyRef:
-                  name: demo-configmap
-                  key: DATABASE_URL
-            - name: POSTGRES_USER
-              valueFrom:
-                configMapKeyRef:
-                  name: demo-configmap
-                  key: DATABASE_USERNAME
-            - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: demo-secret
-                  key: database-password
           volumeMounts:
-            - name: postgres-persistent-storage
+            - name: data
               mountPath: /var/lib/postgresql/data
   volumeClaimTemplates:
     - metadata:
-        name: postgres-persistent-storage
+        name: data
       spec:
-        accessModes: ["ReadWriteOnce"]
+        accessModes: [ "ReadWriteOnce" ]
         resources:
           requests:
             storage: 1Gi

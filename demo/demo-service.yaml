@@ -6,6 +6,6 @@ spec:
   selector:
     app: demo
   ports:
-    - port: 80  # Port that the service should expose internally
-      targetPort: 80  # Port on the container to which traffic will be forwarded
+    - port: 8080  # Port that the service should expose internally
+      targetPort: 8080  # Port on the container to which traffic will be forwarded
   type: ClusterIP  # Expose the service internally inside the cluster
