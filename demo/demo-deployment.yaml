@@ -27,5 +27,8 @@ spec:
               value: jdbc:postgresql://postgres:5432/dians-users
             - name: DATABASE_USERNAME
               value: postgres
-            - name: DATABASE_PASSWORD
-              value: dians
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: demo-secret
+                  key: database-password
