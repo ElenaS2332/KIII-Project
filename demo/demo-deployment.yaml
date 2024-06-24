@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: demo-deployment
-  namespace: demo-namespace  # Add namespace here
+  namespace: demo-namespace
 spec:
   replicas: 1
   selector:
@@ -24,7 +24,7 @@ spec:
             - containerPort: 8080
           env:
             - name: DATABASE_URL
-              value: jdbc:postgresql://postgres-service:5432/dians-users  # Use the service name here
+              value: jdbc:postgresql://postgres:5432/dians-users
             - name: DATABASE_USERNAME
               value: postgres
             - name: DATABASE_PASSWORD

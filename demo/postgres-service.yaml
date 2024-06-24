@@ -2,8 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: postgres-service
+  namespace: demo-namespace
 spec:
   selector:
     app: postgres
   ports:
-    - port: 5432  # Port that the service should expose
+    - port: 5432

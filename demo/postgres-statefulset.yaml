@@ -21,7 +21,10 @@ spec:
             - name: POSTGRES_USER
               value: postgres
             - name: POSTGRES_PASSWORD
-              value: dians
+              valueFrom:
+                secretKeyRef:
+                  name: demo-secret
+                  key: database-password
             - name: POSTGRES_DB
               value: dians-users
           ports:
