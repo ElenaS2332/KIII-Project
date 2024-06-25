@@ -6,20 +6,21 @@ metadata:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: database-config
+  name: postgres-conf
   namespace: demo-namespace
 data:
-  DATABASE_URL: jdbc:postgresql://postgres:5432/dians-users
-  DATABASE_USERNAME: postgres
+  host: "postgres"
+  name: "dians-users"
 ---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: demo-secret
+  name: postgres-credentials
   namespace: demo-namespace
 type: Opaque
 data:
-  database-password: ZGlhbnM=
+  postgres_user: cG9zdGdyZXM=
+  postgres_password: ZGlhbnM=
 ---
 apiVersion: v1
 kind: Service
@@ -62,6 +63,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: postgres-pvc
   namespace: demo-namespace
+  labels:
+    app: postgres
+    tier: database
 spec:
   accessModes:
     - ReadWriteOnce
@@ -74,9 +78,13 @@ kind: Service
 metadata:
   name: postgres
   namespace: demo-namespace
+  labels:
+    app: postgres
+    tier: database
 spec:
   selector:
     app: postgres
+    tier: database
   ports:
     - port: 5432
 ---
@@ -101,11 +109,20 @@ spec:
           image: postgres:13
           env:
             - name: POSTGRES_USER
-              value: postgres
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: postgres_user
             - name: POSTGRES_PASSWORD
-              value: dians
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: postgres_password
             - name: POSTGRES_DB
-              value: dians-users
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-conf
+                  key: name
           ports:
             - containerPort: 5432
           volumeMounts:
@@ -145,9 +162,23 @@ spec:
           ports:
             - containerPort: 8080
           env:
-            - name: DATABASE_URL
-              value: jdbc:postgresql://postgres:5432/dians-users
-            - name: DATABASE_USERNAME
-              value: postgres
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-conf
+                  key: host
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-conf
+                  key: name
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: postgres_user
             - name: POSTGRES_PASSWORD
-              value: dians
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: postgres_password
